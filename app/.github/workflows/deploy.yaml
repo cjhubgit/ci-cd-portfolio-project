@@ -13,10 +13,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Debug workspace
+        run: |
+          echo "Current directory contents:"
+          ls -R
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -32,7 +35,6 @@ jobs:
         run: |
           python -m unittest discover
 
-
       - name: Log in to Docker
         env:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
@@ -40,9 +42,14 @@ jobs:
         run: |
           echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
+      - name: Debug Dockerfile and build context
+        run: |
+          echo "Verifying Dockerfile location:"
+          ls app/
+
       - name: Build Docker Image
         run: |
-          docker build -t flask-app .
+          docker build -f app/Dockerfile -t flask-app .
 
       - name: Push Docker Image
         env:

@@ -13,28 +13,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout the code
+
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Step 2: Set up Python
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: "3.9"
 
-      # Step 3: Install dependencies
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # Step 4: Run tests
       - name: Run tests
         run: |
           python -m unittest discover
 
-      # Step 5: Log in to Docker
+
       - name: Log in to Docker
         env:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
@@ -42,27 +40,27 @@ jobs:
         run: |
           echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
-      # Step 6: Build Docker image
       - name: Build Docker Image
         run: |
           docker build -t flask-app .
 
-      # Step 7: Push Docker image to a registry (optional, if you use Docker Hub or another registry)
       - name: Push Docker Image
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         run: |
-          docker tag flask-app <DOCKER_USERNAME>/flask-app:latest
-          docker push <DOCKER_USERNAME>/flask-app:latest
+          docker tag flask-app $DOCKER_USERNAME/flask-app:latest
+          docker push $DOCKER_USERNAME/flask-app:latest
 
-      # Step 8: Deploy to Render
       - name: Deploy to Render
         env:
           RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+          RENDER_SERVICE_ID: ${{ secrets.RENDER_SERVICE_ID }}
         run: |
           curl -X POST \
             -H "Authorization: Bearer $RENDER_API_KEY" \
             -H "Content-Type: application/json" \
             -d '{
-                  "serviceId": "<YOUR_RENDER_SERVICE_ID>",
+                  "serviceId": "$RENDER_SERVICE_ID",
                   "triggerType": "manual"
               }' \
-            https://api.render.com/v1/services/<YOUR_RENDER_SERVICE_ID>/deploys
+            https://api.render.com/v1/services/$RENDER_SERVICE_ID/deploys

@@ -4,24 +4,24 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    print("Rendering the home page")
+    print("Home route accessed")
     return render_template("home.html")
 
 @app.route("/about")
 def about():
-    print("Rendering the about page")
+    print("About route accessed")
     return render_template("about.html")
 
 @app.route("/portfolio")
 def portfolio():
-    print("Rendering the portfolio page")
+    print("Portfolio route accessed")
     return render_template("portfolio.html")
 
 @app.route("/images")
 def images():
-    print("Rendering the images page")
+    print("Images route accessed")
     return render_template("images.html")
 
 if __name__ == "__main__":
-    print("Starting the Flask application...")
-    app.run(host="0.0.0.0", port=5000)
+    print("Starting Flask application with debug mode enabled...")
+    app.run(host="0.0.0.0", port=5000, debug=True)  # Debug mode ON

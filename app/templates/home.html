@@ -1,6 +1,83 @@
 {% extends "base.html" %}
 {% block title %}Home{% endblock %}
+
 {% block content %}
-<h1 style="=text-align: center;">Welcome to My Portfolio</h1>
-<p>This is the home page.</p>
+<!-- Digital Clock -->
+<div id="clock" style="position: absolute; top: 10px; left: 10px; font-size: 20px; font-family: Calibri, sans-serif; color: #4CAF50; padding: 10px; border: 2px solid #4CAF50; border-radius: 5px; background-color: #ffffff;">
+    Loading time...
+</div>
+
+<!-- Main Content -->
+<div style="text-align: center; font-family: Calibri, sans-serif; font-size: 18px; padding: 20px; border: 3px solid #4CAF50; border-radius: 10px; max-width: 800px; margin: 0 auto; background-color: #f9f9f9;">
+    <h1 style="color: #4CAF50;">Welcome to My DevOps Portfolio</h1>
+    <img src="{{ url_for('static', filename='images/devops_banner.jpg') }}" alt="DevOps Journey" 
+         style="width: 50%; height: auto; max-width: 300px; border-radius: 10px; margin-bottom: 20px;">
+
+    <p>
+        DevOps bridges the gap between development and operations, enabling faster delivery and higher-quality software.
+        It's about automation, collaboration, and continuous improvement.
+    </p>
+
+    <h2 style="color: #4CAF50;">Key Highlights of My DevOps Learning</h2>
+    <ul style="list-style-type: none; padding: 0; text-align: left; margin: 0 auto; max-width: 600px;">
+        <li>✔️ Mastered AWS services like <b>S3</b>, <b>Route 53</b>, and networking concepts such as <b>public</b> and <b>private subnets</b>.</li>
+        <li>✔️ Developed and automated CI/CD pipelines using GitHub Actions and Jenkins.</li>
+        <li>✔️ Gained expertise in containerization with Docker for scalable application deployment.</li>
+        <li>✔️ Regularly updated my <a href="https://www.linkedin.com" style="color: #4CAF50;">LinkedIn profile</a> with new projects to showcase progress.</li>
+    </ul>
+
+    <h2 style="color: #4CAF50;">What Does a DevOps Timeline Look Like?</h2>
+    <div style="text-align: left; margin: 20px auto; max-width: 600px; padding: 10px; border: 2px dashed #4CAF50; border-radius: 5px; background-color: #ffffff;">
+        <ol>
+            <li><b>Plan:</b> Gather requirements and define project goals.</li>
+            <li><b>Develop:</b> Write code and version control using GitHub or similar tools.</li>
+            <li><b>Build:</b> Use CI/CD pipelines to compile and test your application.</li>
+            <li><b>Release:</b> Automate deployments using tools like Jenkins or GitHub Actions.</li>
+            <li><b>Operate:</b> Monitor applications with tools like AWS CloudWatch.</li>
+            <li><b>Learn:</b> Gather feedback and improve continuously.</li>
+        </ol>
+    </div>
+
+    <h2 style="color: #4CAF50;">Learn More About DevOps</h2>
+    <p style="text-align: left; margin: 0 auto; max-width: 600px;">
+        Here are some great resources to deepen your understanding of DevOps and related tools
+    </p>
+    <ul style="list-style-type: none; padding: 0; text-align: left; margin: 0 auto; max-width: 600px;">
+        <li>🌐 <a href="https://aws.amazon.com/getting-started/" style="color: #4CAF50;">Learn AWS</a></li>
+        <li>🌐 <a href="https://www.jenkins.io/doc/" style="color: #4CAF50;">Get Started with Jenkins</a></li>
+        <li>🌐 <a href="https://www.redhat.com/en/topics/devops/what-is-devops" style="color: #4CAF50;">What is DevOps?</a></li>
+    </ul>
+
+    <h2 style="color: #4CAF50;">Contact Me</h2>
+    <p>
+        <b>WhatsApp:</b> +966541385277<br>
+        <b>Email:</b> <a href="mailto:ahmedy167@gmail.com" style="color: #4CAF50;">ahmedy167@gmail.com</a>
+    </p>
+
+    <!-- Explore My Journey Button -->
+    <a href="{{ url_for('portfolio') }}" style="display: inline-block; margin-top: 20px; padding: 10px 20px; font-size: 16px; color: white; background-color: #4CAF50; text-decoration: none; border-radius: 5px; transition: 0.3s;">
+        Explore My Journey
+    </a>
+</div>
+
+<!-- JavaScript for Digital Clock -->
+<script>
+    function updateClock() {
+        const clock = document.getElementById('clock');
+        const now = new Date();
+        const timeString = now.toLocaleTimeString();
+        clock.textContent = timeString;
+    }
+    setInterval(updateClock, 1000);
+    updateClock(); // Initialize the clock
+</script>
 {% endblock %}
+
+
+
+
+
+
+
+
+

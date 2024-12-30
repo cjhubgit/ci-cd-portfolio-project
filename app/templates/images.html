@@ -1,7 +1,15 @@
 {% extends "base.html" %}
 {% block title %}Images{% endblock %}
 {% block content %}
-<h1>Image Gallery</h1>
-<img src="{{ url_for('static', filename='images/home_page_image.jpg') }}" alt="Placeholder" style="width: 150px; height: 200px;">
-<img src="{{ url_for('static', filename='images/devops_banner.jpg') }}" alt="Placeholder" style="width: 100px; height: 150px;">
+<h1 style="text-align: center;">Image Gallery</h1>
+<div style="display: flex; gap: 40px; align-items: flex-start; justify-content: center; flex-wrap: wrap;">
+    <img src="{{ url_for('static', filename='images/home_page_image.jpg') }}" 
+         alt="Home Page Image" 
+         style="max-width: 400px; height: auto; border: 1px solid #ccc; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+    <img src="{{ url_for('static', filename='images/devops_banner.jpg') }}" 
+         alt="DevOps Banner" 
+         style="max-width: 400px; height: auto; border: 1px solid #ccc; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+</div>
 {% endblock %}
+
+

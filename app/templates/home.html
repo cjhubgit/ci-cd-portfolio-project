@@ -27,7 +27,7 @@
     </ul>
 
     <h2 style="color: #4CAF50;">Submit Your Image</h2>
-    <form action="/upload" method="post" enctype="multipart/form-data" style="margin: 20px auto; text-align: center;">
+    <form method="POST" action="/upload" enctype="multipart/form-data" style="margin: 20px auto; text-align: center;">
         <label for="image" style="color: #4CAF50; font-weight: bold;">Choose an image to upload:</label><br>
         <input type="file" name="image" id="image" style="margin: 10px;"><br>
         <button type="submit" style="padding: 10px 20px; font-size: 16px; color: white; background-color: #4CAF50; border: none; border-radius: 5px; cursor: pointer;">
@@ -36,7 +36,7 @@
     </form>
 
     <h2 style="color: #4CAF50;">Get in Touch</h2>
-    <form action="/contact" method="post" style="margin: 20px auto; text-align: center; max-width: 400px;">
+    <form method="POST" style="margin: 20px auto; text-align: center; max-width: 400px;">
         <label for="name" style="color: #4CAF50; font-weight: bold;">Your Name:</label><br>
         <input type="text" name="name" id="name" required style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px;"><br>
         
@@ -50,6 +50,16 @@
             Submit
         </button>
     </form>
+
+    <!-- Display Submitted Contact Info -->
+    {% if contact_info %}
+    <div style="margin: 20px auto; text-align: center; max-width: 400px; border: 2px solid #4CAF50; padding: 20px; border-radius: 10px; background-color: #f9f9f9;">
+        <h3 style="color: #4CAF50;">Submitted Contact Information:</h3>
+        <p><strong>Name:</strong> {{ contact_info.name }}</p>
+        <p><strong>Email:</strong> {{ contact_info.email }}</p>
+        <p><strong>Message:</strong> {{ contact_info.message }}</p>
+    </div>
+    {% endif %}
 </div>
 
 <!-- JavaScript for Digital Clock -->
@@ -64,3 +74,4 @@
     updateClock(); // Initialize the clock
 </script>
 {% endblock %}
+

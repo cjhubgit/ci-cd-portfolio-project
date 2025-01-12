@@ -21,7 +21,7 @@ def send_email(student_name, student_id, slot):
         print("[ERROR] Email credentials are not set.")
         return
 
-    subject = "New Appointment has been completed onyl one"
+    subject = "New Appointment has been completed onyl one the"
     body = f"""
     Hello {student_name},
     Your appointment has been successfully booked:

@@ -1,3 +1,38 @@
+.appointment-form {
+  margin: 20px auto;
+  max-width: 400px;
+  text-align: left;
+  border: 2px solid salmon; /* Fixed missing 'solid' */
+  border-radius: 10px;
+}
+
+.form-label {
+  color: bisque;
+  font-weight: bold;
+}
+
+.form-input { /* Changed '.form.input' to '.form-input' */
+  width: 100%;
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid #ccc; /* Fixed invalid border definition */
+  border-radius: 5px;
+}
+
+.form-button { /* Moved outside .form-input block */
+  padding: 10px 20px;
+  font-size: 16px; /* Fixed typo: 'font-szie' to 'font-size' */
+  color: whitesmoke;
+  background-color: cornflowerblue;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.form-button:hover { /* Changed duplicate '.form-button' to ':hover' */
+  background-color: olivedrab;
+}
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -19,7 +54,4 @@ header nav a {
 
 .center-title {
   text-align: center;
-}
-
-
 }

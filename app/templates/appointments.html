@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}Appointments{% endblock %}
+
+{% block content %}
+
+<h3>Current Appointments:</h3>
+<ul>
+  {% for slot, students in appointments.items() %}
+  <li><b>{{ slot }}</b>:
+    {% if students %}
+    <ul>
+      {% for student in students %}
+      <li>{{ student.name }} (ID: {{ student.student_id }})</li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    No appointments yet.
+    {% endif %}
+  </li>
+  {% endfor %}
+</ul>
+
+<h2>Set Up an Appointment</h2>
+
+<!-- Appointment Form -->
+<form method="post" style="margin: 20px auto; max-width: 400px; text-align: left; border: 2px solid green; padding: 20px; border-radius: 10px;">
+  <label for="name" style="color: #4CAF50; font-weight: bold;">Your Name:</label><br>
+  <input type="text" name="name" id="name" placeholder="Enter your name" required style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px;"><br>
+
+  <label for="student_id" style="color: #4CAF50; font-weight: bold;">Student ID:</label><br>
+  <input type="text" name="student_id" id="student_id" placeholder="Enter your Student ID" required style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px;"><br>
+
+  <label for="slot" style="color: #4CAF50; font-weight: bold;">Choose a Time Slot:</label><br>
+  <select name="slot" id="slot" required style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px;">
+    <option value="" disabled selected>Select a time slot</option>
+    <option value="Sunday 9:00 AM - 10:00 AM">Sunday 9:00 AM - 10:00 AM</option>
+    <option value="Tuesday 9:00 AM - 10:00 AM">Tuesday 9:00 AM - 10:00 AM</option>
+  </select><br>
+
+  <button type="submit" style="padding: 10px 20px; font-size: 16px; color: white; background-color: #4CAF50; border: none; border-radius: 5px; cursor: pointer;">Submit</button>
+</form>
+
+{% if message %}
+<p style="color: green; text-align: center;">{{ message }}</p>
+{% endif %}
+
+{% endblock %}

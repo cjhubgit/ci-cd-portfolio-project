@@ -2,76 +2,92 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<!-- Digital Clock -->
-<div id="clock" style="position: absolute; top: 10px; left: 10px; font-size: 20px; font-family: Calibri, sans-serif; color: #4CAF50; padding: 10px; border: 2px solid #4CAF50; border-radius: 5px; background-color: #ffffff;">
-    Loading time...
-</div>
-
-<!-- Main Content -->
-<div style="text-align: center; font-family: Calibri, sans-serif; font-size: 18px; padding: 20px; border: 3px solid #4CAF50; border-radius: 10px; max-width: 800px; margin: 0 auto; background-color: #f9f9f9;">
-    <h1 style="color: #4CAF50;">Welcome to My DevOps Portfolio</h1>
-    <img src="{{ url_for('static', filename='images/devops_banner.jpg') }}" alt="DevOps Journey" 
-         style="width: 50%; height: auto; max-width: 300px; border-radius: 10px; margin-bottom: 20px;">
-
-    <p>
-        DevOps bridges the gap between development and operations, enabling faster delivery and higher-quality software.
-        It's about automation, collaboration, and continuous improvement.
-    </p>
-
-    <h2 style="color: #4CAF50;">Key Highlights of My DevOps Learning</h2>
-    <ul style="list-style-type: none; padding: 0; text-align: left; margin: 0 auto; max-width: 600px;">
-        <li>✔️ Mastered AWS services like <b>S3</b>, <b>Route 53</b>, and networking concepts such as <b>public</b> and <b>private subnets</b>.</li>
-        <li>✔️ Developed and automated CI/CD pipelines using GitHub Actions and Jenkins.</li>
-        <li>✔️ Gained expertise in containerization with Docker for scalable application deployment.</li>
-        <li>✔️ Regularly updated my <a href="https://www.linkedin.com" style="color: #4CAF50;">LinkedIn profile</a> with new projects to showcase progress.</li>
-    </ul>
-
-    <h2 style="color: #4CAF50;">Submit Your Image</h2>
-    <form method="POST" action="/upload" enctype="multipart/form-data" style="margin: 20px auto; text-align: center;">
-        <label for="image" style="color: #4CAF50; font-weight: bold;">Choose an image to upload:</label><br>
-        <input type="file" name="image" id="image" style="margin: 10px;"><br>
-        <button type="submit" style="padding: 10px 20px; font-size: 16px; color: white; background-color: #4CAF50; border: none; border-radius: 5px; cursor: pointer;">
-            Upload Image
-        </button>
-    </form>
-
-    <h2 style="color: #4caf55;">Get in Touch</h2>
-    <form method="POST" style="margin: 20px auto; text-align: center; max-width: 400px;">
-        <label for="name" style="color: #4CAF50; font-weight: bold;">Your Name:</label><br>
-        <input type="text" name="name" id="name" required style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px;"><br>
-        
-        <label for="email" style="color: #4CAF50; font-weight: bold;">Your Email:</label><br>
-        <input type="email" name="email" id="email" required style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px;"><br>
-        
-        <label for="message" style="color: #4CAF50; font-weight: bold;">Your Message:</label><br>
-        <textarea name="message" id="message" rows="4" required style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px;"></textarea><br>
-        
-        <button type="submit" style="padding: 10px 20px; font-size: 16px; color: white; background-color: #4CAF50; border: none; border-radius: 5px; cursor: pointer;">
-            Submit
-        </button>
-    </form>
-
-    <!-- Display Submitted Contact Info -->
-    {% if contact_info %}
-    <div style="margin: 20px auto; text-align: center; max-width: 400px; border: 2px solid #4CAF50; padding: 20px; border-radius: 10px; background-color: #f9f9f9;">
-        <h3 style="color: #4CAF50;">Submitted Contact Information:</h3>
-        <p><strong>Name:</strong> {{ contact_info.name }}</p>
-        <p><strong>Email:</strong> {{ contact_info.email }}</p>
-        <p><strong>Message:</strong> {{ contact_info.message }}</p>
+<div style="position: relative; padding: 20px; background: url('{{ url_for('static', filename='images/devops_background.jpg') }}') no-repeat center center / cover; color: #fff;">
+    <!-- Hero Section with Digital Clock -->
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+        <div id="clock" style="font-size: 16px; font-weight: bold; padding: 8px 15px; border: 1px solid #4CAF50; border-radius: 5px; background-color: rgba(0, 0, 0, 0.7);"></div>
+        <h1 style="font-size: 28px; margin: 0; font-family: 'Courier New', Courier, monospace;" id="hero-text">
+            Welcome to My DevOps Portfolio
+        </h1>
     </div>
-    {% endif %}
+
+    <!-- Search Bar -->
+    <form method="get" action="https://www.google.com/search" target="_blank" style="margin-top: 20px; text-align: center;">
+        <input type="text" name="q" placeholder="Search on Google" style="width: 50%; padding: 8px; margin: 10px; border: 1px solid #ccc; border-radius: 5px;">
+        <button type="submit" style="padding: 8px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px;">
+            Search
+        </button>
+    </form>
+
+    <!-- Motivational Quote Section -->
+    <div style="margin: 20px auto; padding: 15px; border: 1px solid #4CAF50; border-radius: 3%; background-color: rgba(0, 0, 0, 0.7); text-align: center; max-width: 70%;">
+        <h2 style="color: #4CAF50;">"Showcasing my journey to master DevOps and inspire continuous learning"</h2>
+    </div>
+
+    <!-- Key Achievements Section -->
+    <div style="margin-top: 30px;">
+        <h2 style="text-align: center; color: #4CAF50;">Key Achievements</h2>
+        <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+            <div style="width: 25%; text-align: center; padding: 12px; border: 1px solid #4CAF50; border-radius: 5px; background-color: rgba(0, 0, 0, 0.7);">
+                <h3 style="color: #4CAF50;">AWS Deployment</h3>
+                <p>Built secure and scalable solutions using AWS services like S3 and Route 53.</p>
+            </div>
+            <div style="width: 25%; text-align: center; padding: 12px; border: 1px solid #4CAF50; border-radius: 5px; background-color: rgba(0, 0, 0, 0.7);">
+                <h3 style="color: #4CAF50;">CI/CD Pipelines</h3>
+                <p>Automated build, test, and deployment workflows using Jenkins and GitHub Actions.</p>
+            </div>
+            <div style="width: 25%; text-align: center; padding: 12px; border: 1px solid #4CAF50; border-radius: 5px; background-color: rgba(0, 0, 0, 0.7);">
+                <h3 style="color: #4CAF50;">Dockerized Applications</h3>
+                <p>Containerized web applications for efficient and scalable deployments.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Call-to-Action -->
+    <div style="text-align: center; margin-top: 30px;">
+        <a href="/portfolio" style="padding: 10px 20px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px; font-size: 16px;">
+            View My Portfolio
+        </a>
+    </div>
+
+    <!-- LinkedIn Posts Section -->
+    <div style="margin-top: 50px;">
+        <h2 style="text-align: center; color: #4CAF50;">Explore Latest LinkedIn Posts on DevOps</h2>
+        <div id="linkedin-posts" style="margin: 20px auto; padding: 20px; border: 1px solid #4CAF50; border-radius: 5px; background-color: rgba(0, 0, 0, 0.7); text-align: center; max-width: 80%;">
+            <p style="color: #fff;">This section can be dynamically integrated with LinkedIn's API to fetch and display the latest DevOps posts. Alternatively, static posts or embedded content can be added here.</p>
+        </div>
+    </div>
 </div>
 
-<!-- JavaScript for Digital Clock -->
+<!-- Typewriter Effect Script -->
 <script>
-    function updateClock() {
-        const clock = document.getElementById('clock');
-        const now = new Date();
-        const timeString = now.toLocaleTimeString();
-        clock.textContent = timeString;
+    const text = "Welcome to My DevOps Portfolio";
+    const heroText = document.getElementById("hero-text");
+    let index = 0;
+
+    function typeText() {
+        if (index < text.length) {
+            heroText.textContent += text.charAt(index);
+            index++;
+            setTimeout(typeText, 100);
+        }
     }
+    heroText.textContent = "";
+    typeText();
+
+    // Digital Clock
+    const clock = document.getElementById("clock");
+    function updateClock() {
+        const now = new Date();
+        clock.textContent = now.toLocaleTimeString();
+    }
+    clock.addEventListener("mouseover", () => {
+        clock.textContent = new Date().toLocaleDateString();
+    });
+    clock.addEventListener("mouseout", updateClock);
     setInterval(updateClock, 1000);
-    updateClock(); // Initialize the clock
+    updateClock();
 </script>
 {% endblock %}
+
 

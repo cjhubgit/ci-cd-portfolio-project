@@ -1,57 +1,81 @@
-.appointment-form {
-  margin: 20px auto;
-  max-width: 400px;
-  text-align: left;
-  border: 2px solid salmon; /* Fixed missing 'solid' */
-  border-radius: 10px;
-}
-
-.form-label {
-  color: bisque;
-  font-weight: bold;
-}
-
-.form-input { /* Changed '.form.input' to '.form-input' */
-  width: 100%;
-  padding: 10px;
-  margin: 10px;
-  border: 1px solid #ccc; /* Fixed invalid border definition */
-  border-radius: 5px;
-}
-
-.form-button { /* Moved outside .form-input block */
-  padding: 10px 20px;
-  font-size: 16px; /* Fixed typo: 'font-szie' to 'font-size' */
-  color: whitesmoke;
-  background-color: cornflowerblue;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.form-button:hover { /* Changed duplicate '.form-button' to ':hover' */
-  background-color: olivedrab;
-}
-
+/* General Styling */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  background-color: #f9f9f9;
 }
 
+/* Marquee */
+.marquee {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  font-size: 16px;
+}
+
+/* Navbar */
 header {
   background-color: #333;
-  padding: 1rem;
-  text-align: center;
-}
-
-header nav a {
   color: white;
-  margin: 0 1rem;
-  text-decoration: none;
+  padding: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Added shadow for navbar */
 }
 
-.center-title {
-  text-align: center;
+header nav {
+  display: flex;
+  justify-content: center; /* Center align the nav items */
+  align-items: center;
 }
+
+#nav-links {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; /* Space between links */
+}
+
+#nav-links li {
+  margin: 0;
+}
+
+#nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  font-family: 'Arial', sans-serif;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s, transform 0.2s; /* Smooth hover effects */
+}
+
+#nav-links li a:hover {
+  background-color: #4CAF50;
+  color: white;
+  transform: scale(1.1); /* Slight zoom on hover */
+}
+
+/* Responsive Styling for Navbar */
+@media (max-width: 768px) {
+  #nav-links {
+    flex-direction: column;
+    gap: 10px; /* Adjusted spacing for smaller screens */
+  }
+}
+
+/* Appointment Form */
+.appointment-form {
+  margin: 20px auto;
+  max-width: 280px;
+  text-align: left;
+  border: 2px solid green;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ...other styles from your code... */

@@ -7,21 +7,38 @@
     <title>{% block title %}My CI/CD Portfolio{% endblock %}</title>
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="/">Home</a>
-            <a href="/about">About Us</a>
-            <a href="/portfolio">Portfolio</a>
-            <a href="/images">Images</a>
-            <a href="/appointments">Appointments</a>
+    <!-- Marquee -->
+    <div class="marquee">
+        <p>Welcome to My DevOps Portfolio! Stay updated on my learning journey and latest projects in DevOps.</p>
+    </div>
 
-        </nav>
-    </header>
+    <!-- Navbar -->
+<header>
+  <nav style="background-color: #333; padding: 10px 20px;">
+    <ul id="nav-links" style="display: flex; justify-content: center; list-style: none; margin: 0; padding: 0;">
+      <li style="margin: 0 15px;"><a href="/" style="color: white; text-decoration: none; font-size: 18px; padding: 10px 15px; border-radius: 5px; transition: background-color 0.3s;">Home</a></li>
+      <li style="margin: 0 15px;"><a href="/about" style="color: white; text-decoration: none; font-size: 18px; padding: 10px 15px; border-radius: 5px; transition: background-color 0.3s;">About Us</a></li>
+      <li style="margin: 0 15px;"><a href="/portfolio" style="color: white; text-decoration: none; font-size: 18px; padding: 10px 15px; border-radius: 5px; transition: background-color 0.3s;">Portfolio</a></li>
+      <li style="margin: 0 15px;"><a href="/images" style="color: white; text-decoration: none; font-size: 18px; padding: 10px 15px; border-radius: 5px; transition: background-color 0.3s;">Images</a></li>
+      <li style="margin: 0 15px;"><a href="/appointments" style="color: white; text-decoration: none; font-size: 18px; padding: 10px 15px; border-radius: 5px; transition: background-color 0.3s;">Appointments</a></li>
+    </ul>
+  </nav>
+</header>
+
+
     <main>
         {% block content %}{% endblock %}
     </main>
+
     <footer>
         <p>© 2024 My Portfolio</p>
     </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById("nav-links");
+            navLinks.classList.toggle("hidden");
+        }
+    </script>
 </body>
 </html>
